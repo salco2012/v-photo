@@ -27,34 +27,78 @@
           type="button"
           @click="filtersImage.sepia = !filtersImage.sepia"
           >Сепия</button>
-          <button class="photo-parameters__button" type="button">Рамка</button>
-          <button class="photo-parameters__button" type="button">Тень</button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.frame = !filtersImage.frame"
+          >Рамка</button>
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.shadow = !filtersImage.shadow"
+          >Тень</button>
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.outline = !filtersImage.outline"
+          >
             Обводка
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.blur = !filtersImage.blur"
+          >
             Размытие
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.brightness = !filtersImage.brightness"
+          >
             Яркость
           </button>
-          <button class="photo-parameters__button" type="button">
-            Яркость
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.saturate = !filtersImage.saturate"
+          >
+            Насыщенность
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.contrast =! filtersImage.contrast"
+          >
             Контраст
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.grayscale = !filtersImage.grayscale"
+          >
             Оттенок серого
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.hueRotate = !filtersImage.hueRotate"
+          >
             Оттенок-поворот
           </button>
-          <button class="photo-parameters__button" type="button">
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.invert = !filtersImage.invert"
+          >
             Инвертировать
           </button>
-          <button class="photo-parameters__button" type="button">
-            Постеризовать
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.outset = !filtersImage.outset"
+          >
+            Обводка с градиентом
           </button>
         </div>
       </div>
@@ -86,11 +130,13 @@ export default {
             blur: false,
             brightness: false,
             contrast: false,
+            saturate: false,
             grayscale: false,
             hueRotate: false,
             invert: false,
-            posterize: false,
-         }
+            outset: false,
+         },
+         isActiveButton: false
       }
    }
 };
@@ -149,5 +195,38 @@ input[type="range"] {
 }
 .sepia{
    filter: sepia(100%);
+}
+.frame{
+   border: 3px dashed rgb(141, 0, 0);
+}
+.shadow{
+   box-shadow: 0 0 10px rgba(0,0,0,0.5);;
+}
+.outline{
+      border: 3px solid black;
+}
+.blur{
+   filter: blur(3px);
+}
+.brightness{
+   filter: brightness(40%);
+}
+.contrast {
+   filter: contrast(15%);
+}
+.grayscale{
+   filter: grayscale(.75);
+}
+.saturate{
+   filter: saturate(350%);
+}
+.hueRotate{
+   filter: hue-rotate(270deg);
+}
+.invert{
+   filter: invert(100%);
+}
+.outset{
+   border: 5px outset rgb(174, 0, 255);
 }
 </style>
