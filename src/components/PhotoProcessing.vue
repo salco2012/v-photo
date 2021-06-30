@@ -7,6 +7,7 @@
       alt="logo-vue" 
       width="500"
       v-if="visibilityImg"
+      :class='filtersImage'
       />
        </div>
       <div class="photo-parameters">
@@ -21,7 +22,11 @@
 
         <h4>Фильтры:</h4>
         <div class="button-wrapper">
-          <button class="photo-parameters__button" type="button">Сепия</button>
+          <button 
+          class="photo-parameters__button" 
+          type="button"
+          @click="filtersImage.sepia = !filtersImage.sepia"
+          >Сепия</button>
           <button class="photo-parameters__button" type="button">Рамка</button>
           <button class="photo-parameters__button" type="button">Тень</button>
           <button class="photo-parameters__button" type="button">
@@ -72,7 +77,20 @@ export default {
    name: 'PhotoProcessing',
    data() {
       return {
-         visibilityImg: false,
+         visibilityImg: true,
+         filtersImage: {
+            sepia: false,
+            frame: false,
+            shadow: false,
+            outline: false,
+            blur: false,
+            brightness: false,
+            contrast: false,
+            grayscale: false,
+            hueRotate: false,
+            invert: false,
+            posterize: false,
+         }
       }
    }
 };
@@ -128,5 +146,8 @@ input[type="range"] {
    background-color: rgba(172, 171, 170, 0.747);
    width: 500px;
    height: 298px;
+}
+.sepia{
+   filter: sepia(100%);
 }
 </style>
