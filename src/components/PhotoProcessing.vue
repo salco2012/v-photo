@@ -1,11 +1,22 @@
 <template>
   <div>
     <div class="main-wrapper">
-      <img src="@/assets/img/vue.jpeg" alt="logo-vue" width="500" />
+       <div class="background-watermark">
+      <img 
+      src="@/assets/img/vue.jpeg" 
+      alt="logo-vue" 
+      width="500"
+      v-if="visibilityImg"
+      />
+       </div>
       <div class="photo-parameters">
         <div class="visibility-wrapper">
           <h4>Видимость изображения:</h4>
-          <button class="show-button" type="button">Показать / Скрыть</button>
+          <button 
+          class="show-button" 
+          type="button"
+          @click="visibilityImg = !visibilityImg"
+          >Показать / Скрыть</button>
         </div>
 
         <h4>Фильтры:</h4>
@@ -57,7 +68,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+   name: 'PhotoProcessing',
+   data() {
+      return {
+         visibilityImg: false,
+      }
+   }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -105,5 +123,10 @@ input[type="range"] {
 }
 .show-button:hover{
    background-color: rgb(250, 173, 73);
+}
+.background-watermark{
+   background-color: rgba(172, 171, 170, 0.747);
+   width: 500px;
+   height: 298px;
 }
 </style>
