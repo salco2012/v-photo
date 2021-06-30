@@ -17,6 +17,7 @@
           class="show-button" 
           type="button"
           @click="visibilityImg = !visibilityImg"
+          :class="visibilityImg ? '' : 'isActiveButton'"
           >Показать / Скрыть</button>
         </div>
 
@@ -26,21 +27,25 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.sepia = !filtersImage.sepia"
+          :class='filtersImage.sepia ? "isActiveButton" : ""'
           >Сепия</button>
           <button 
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.frame = !filtersImage.frame"
+          :class="filtersImage.frame ? 'isActiveButton' : ''"
           >Рамка</button>
           <button 
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.shadow = !filtersImage.shadow"
+          :class="filtersImage.shadow ? 'isActiveButton' : ''"
           >Тень</button>
           <button 
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.outline = !filtersImage.outline"
+          :class="filtersImage.outline ? 'isActiveButton' : ''"
           >
             Обводка
           </button>
@@ -48,6 +53,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.blur = !filtersImage.blur"
+          :class="filtersImage.blur ? 'isActiveButton' : ''"
           >
             Размытие
           </button>
@@ -55,6 +61,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.brightness = !filtersImage.brightness"
+          :class="filtersImage.brightness ? 'isActiveButton' : ''"
           >
             Яркость
           </button>
@@ -62,6 +69,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.saturate = !filtersImage.saturate"
+          :class="filtersImage.saturate ? 'isActiveButton' : ''"
           >
             Насыщенность
           </button>
@@ -69,6 +77,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.contrast =! filtersImage.contrast"
+          :class="filtersImage.contrast ? 'isActiveButton' : ''"
           >
             Контраст
           </button>
@@ -76,6 +85,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.grayscale = !filtersImage.grayscale"
+          :class="filtersImage.grayscale ? 'isActiveButton' : ''"
           >
             Оттенок серого
           </button>
@@ -83,6 +93,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.hueRotate = !filtersImage.hueRotate"
+          :class="filtersImage.hueRotate ? 'isActiveButton' : ''"
           >
             Оттенок-поворот
           </button>
@@ -90,6 +101,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.invert = !filtersImage.invert"
+          :class="filtersImage.invert ? 'isActiveButton' : ''"
           >
             Инвертировать
           </button>
@@ -97,6 +109,7 @@
           class="photo-parameters__button" 
           type="button"
           @click="filtersImage.outset = !filtersImage.outset"
+          :class="filtersImage.outset ? 'isActiveButton' : ''"
           >
             Обводка с градиентом
           </button>
@@ -228,5 +241,8 @@ input[type="range"] {
 }
 .outset{
    border: 5px outset rgb(174, 0, 255);
+}
+.isActiveButton{
+   background-color: rgb(250, 173, 73);
 }
 </style>
