@@ -8,7 +8,7 @@
       width="500"
       v-if="visibilityImg"
       :class="filtersImage"
-      :style="opacityImage"
+      :style="[opacityImage, sizeImage]"
       />
        </div>
       <div class="photo-parameters">
@@ -127,8 +127,25 @@
       :max="opacityImg.opacityMax"
       />
 
-      <h4>Размер:</h4>
-      <input type="range" />
+      <p>{{ `Текущая высота: ${sizeImg.currentHeight}px` }}</p>
+
+      <input 
+      type="range" 
+      :value="sizeImg.currentHeight"
+      @input="sizeImg.currentHeight = $event.target.value"
+      :min="sizeImg.minHeight"
+      :max="sizeImg.maxHeight"
+      />
+
+      <p>{{ `Текущая ширина: ${sizeImg.currentWidth}px` }}</p>
+
+      <input 
+      type="range" 
+      :value="sizeImg.currentWidth"
+      @input="sizeImg.currentWidth = $event.target.value"
+      :min="sizeImg.minWidth"
+      :max="sizeImg.maxWidth"
+      />
 
       <h4>Поворот:</h4>
       <input type="range" />
@@ -161,13 +178,28 @@ export default {
             opacityMax: 100,
             opacityMin: 0,
             currentOpacity: 100
+         },
+         sizeImg: {
+            minHeight: 1,
+            maxHeight: 110,
+            currentHeight: 100,
+            minWidth: 1,
+            maxWidth: 105,
+            currentWidth: 100,
          }
+
       }
    },
    computed: {
       opacityImage() {
          return {
             opacity: `${this.opacityImg.currentOpacity}%`
+         }
+      },
+      sizeImage() {
+         return {
+            height: `${this.sizeImg.currentHeight}%`,
+            width: `${this.sizeImg.currentWidth}%`
          }
       }
    }
