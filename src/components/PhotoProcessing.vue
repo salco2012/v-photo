@@ -7,7 +7,8 @@
       alt="logo-vue" 
       width="500"
       v-if="visibilityImg"
-      :class='filtersImage'
+      :class="filtersImage"
+      :style="opacityImage"
       />
        </div>
       <div class="photo-parameters">
@@ -117,8 +118,14 @@
       </div>
     </div>
     <div class="input-wrapper">
-      <h4>Прозрачность:</h4>
-      <input type="range" />
+      <p>{{ `Текущая прозрачность: ${opacityImg.currentOpacity}%` }}</p>
+      <input 
+      type="range" 
+      :value="opacityImg.currentOpacity"
+      @input="opacityImg.currentOpacity = $event.target.value"
+      :min="opacityImg.opacityMin"
+      :max="opacityImg.opacityMax"
+      />
 
       <h4>Размер:</h4>
       <input type="range" />
@@ -149,7 +156,19 @@ export default {
             invert: false,
             outset: false,
          },
-         isActiveButton: false
+         isActiveButton: false,
+         opacityImg: {
+            opacityMax: 100,
+            opacityMin: 0,
+            currentOpacity: 100
+         }
+      }
+   },
+   computed: {
+      opacityImage() {
+         return {
+            opacity: `${this.opacityImg.currentOpacity}%`
+         }
       }
    }
 };
