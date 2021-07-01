@@ -10,6 +10,7 @@
       :class="filtersImage"
       :style="[opacityImage, sizeImage, rotateImage]"
       />
+      <p class="img-description" v-else>Изображение скрыто</p>
        </div>
       <div class="photo-parameters">
         <div class="visibility-wrapper">
@@ -246,6 +247,9 @@ export default {
   justify-content: space-between;
   width: 400px;
 }
+.img-description{
+text-align: center;
+}
 h4 {
   margin: 10px 0;
 }
@@ -272,6 +276,7 @@ input[type="range"] {
    width: 500px;
    height: 298px;
 }
+
 .sepia{
    filter: sepia(100%);
 }
