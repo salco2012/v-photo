@@ -8,7 +8,7 @@
       width="500"
       v-if="visibilityImg"
       :class="filtersImage"
-      :style="[opacityImage, sizeImage]"
+      :style="[opacityImage, sizeImage, rotateImage]"
       />
        </div>
       <div class="photo-parameters">
@@ -147,8 +147,14 @@
       :max="sizeImg.maxWidth"
       />
 
-      <h4>Поворот:</h4>
-      <input type="range" />
+      <p>{{ `Текущий угол поворота: ${rotateImg.currentRotate} deg` }}</p>
+      <input 
+      type="range" 
+      :value="rotateImg.currentRotate"
+      @input="rotateImg.currentRotate = $event.target.value"
+      :min="rotateImg.rotateMin"
+      :max="rotateImg.rotateMax"
+      />
     </div>
   </div>
 </template>
@@ -186,8 +192,12 @@ export default {
             minWidth: 1,
             maxWidth: 105,
             currentWidth: 100,
+         },
+         rotateImg: {
+            rotateMin: -180,
+            rotateMax: 180,
+            currentRotate: 0,
          }
-
       }
    },
    computed: {
@@ -200,6 +210,11 @@ export default {
          return {
             height: `${this.sizeImg.currentHeight}%`,
             width: `${this.sizeImg.currentWidth}%`
+         }
+      },
+      rotateImage() {
+         return {
+            transform: `rotate(${this.rotateImg.currentRotate}deg)`
          }
       }
    }
